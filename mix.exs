@@ -20,6 +20,8 @@ defmodule Et.Mixfile do
   end
 
   defp deps do
-    []
+    [
+      {:shouldi, "~> 0.1", env: :test}
+    ]
   end
 end
