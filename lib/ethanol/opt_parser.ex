@@ -1,4 +1,4 @@
-defmodule OptParser do
+defmodule Ethanol.OptParser do
   @moduledoc """
   This module provides the feature that parses command line arguments.
   """
