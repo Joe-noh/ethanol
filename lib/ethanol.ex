@@ -1,8 +1,11 @@
 defmodule Ethanol do
   import Supervisor.Spec
+  alias Ethanol.OptParser
 
   def main(args) do
-    start "use", "./**/*.exs"
+    opt = OptParser.parse(args)  # is GenServer suitable?
+
+    start(opt.keyword, opt.glob_pattern)
   end
 
   def start(pattern, glob) do
