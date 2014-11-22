@@ -1,5 +1,6 @@
 defmodule OptParserTest do
   use ShouldI
+  alias Ethanol.OptParser
 
   with "valid input" do
     should "parse options that contain -p" do

@@ -9,7 +9,6 @@ defmodule Ethanol do
         start(opt.pattern, opt.regexp?, opt.glob)
       {:error, code} ->
         process_error(code)
-        System.exit(1)
     end
   end
 
@@ -45,19 +44,8 @@ defmodule Ethanol do
     end
   end
 
-  defp output(search_result) do
-    output(search_result, "")
-  end
-
-  defp output({_, [], path}, colored) do
-    IO.puts(path <> ": " <> colored)
-  end
-
-  defp output({line, res = [{index, length} | rest], path}, acc) do
-    {head, tail}  = String.split_at(line, index)
-    {match, tail} = String.split_at(tail, length)
-    acc = acc <> head <> IO.ANSI.green <> match <> IO.ANSI.reset <> tail
-    output({tail, rest, path}, acc)
+  defp output({matched, path}) do
+    IO.puts(path <> ": " <> matched)
   end
 
   defp process_error(error) do
